@@ -10,20 +10,11 @@ function ManagementPanelContent() {
   const [isValidKey, setIsValidKey] = useState<boolean | null>(null)
 
   useEffect(() => {
+    // Allow access if secretkey is provided (no validation)
     const secretKey = searchParams.get('secretkey')
     
-    // Check secret key - defaults to 9877 if not set in environment
-    const expectedKey = process.env.NEXT_PUBLIC_ADMIN_SECRET_KEY || '9877'
-    
-    // Debug: log to console (remove in production)
-    console.log('Secret key check:', { 
-      provided: secretKey, 
-      expected: expectedKey, 
-      match: secretKey === expectedKey 
-    })
-    
-    if (!secretKey || secretKey !== expectedKey) {
-      // Redirect after a brief delay to show what's happening
+    if (!secretKey) {
+      // Redirect if no secret key provided
       setTimeout(() => {
         router.push('/')
       }, 100)

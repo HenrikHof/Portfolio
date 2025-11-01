@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
-import { cookies } from 'next/headers'
+import { getAdminSession } from '@/lib/auth'
 
 export const metadata: Metadata = {
   title: 'Admin Dashboard',
@@ -19,8 +19,7 @@ export default async function DashboardLayout({
 }: {
   children: React.ReactNode
 }) {
-  const cookieStore = await cookies()
-  const session = cookieStore.get('admin_session')
+  const session = await getAdminSession()
 
   if (!session) {
     redirect('/management-panel')
