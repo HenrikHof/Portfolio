@@ -124,7 +124,7 @@ export default function RootLayout({
               console.log('%c👋 Hey there, fellow developer!', styles.title);
               console.log('%cIf you\\'re reading this, we\\'re probably alike. Let\\'s connect!', styles.message);
               console.log('%cBuilt with Next.js 15 • React 19 • Tailwind CSS', styles.highlight);
-              console.log('%c📧 kontakt@henrikhof.com  |  💬 +351 963 429 170', styles.link);
+              console.log('%c📧 kontakt@henrikhof.com  |  💬 +351 963 429 170  |  💼 linkedin.com/in/henrikhof', styles.link);
             })();
           `}
         </Script>
