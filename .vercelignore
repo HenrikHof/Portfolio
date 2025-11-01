@@ -1,0 +1,12 @@
+# Vercel ignore file
+# Files and directories that should not be uploaded to Vercel
+
+node_modules/
+.git/
+.DS_Store
+*.log
+.env.local
+.env*.local
+next-env.d.ts
+*.tsbuildinfo
+

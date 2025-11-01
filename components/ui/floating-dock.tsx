@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useRef, useState } from "react"
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
+import { motion, MotionValue, useMotionValue, useSpring, useTransform } from "framer-motion"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
 import { playHoverSound, playButtonClickSound } from "@/lib/sounds"
@@ -25,13 +25,13 @@ function IconContainer({
   icon,
   onHover,
 }: {
-  mouseX: any
+  mouseX: MotionValue<number>
   title: string
   icon: React.ReactNode
   onHover?: () => void
 }) {
   const ref = useRef<HTMLDivElement>(null)
-  const distance = useTransform(mouseX, (val) => {
+  const distance = useTransform(mouseX, (val: number) => {
     const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 }
     return val - bounds.x - bounds.width / 2
   })
@@ -124,7 +124,7 @@ export function FloatingDock({
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => playClickSound()}
+                onClick={() => playButtonClickSound()}
                 className="flex h-full w-full items-center justify-center"
                 data-dock-item
                 data-index={index}
@@ -139,7 +139,7 @@ export function FloatingDock({
             ) : (
               <Link 
                 href={item.href} 
-                onClick={() => playClickSound()}
+                onClick={() => playButtonClickSound()}
                 className="flex h-full w-full items-center justify-center"
                 data-dock-item
                 data-index={index}
@@ -182,7 +182,7 @@ export function FloatingDock({
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => playClickSound()}
+                onClick={() => playButtonClickSound()}
                 onMouseEnter={() => playHoverSound()}
                 className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-background to-muted/50 border border-border/50 shadow-sm transition-all hover:scale-105"
               >
@@ -191,7 +191,7 @@ export function FloatingDock({
             ) : (
               <Link
                 href={item.href}
-                onClick={() => playClickSound()}
+                onClick={() => playButtonClickSound()}
                 onMouseEnter={() => playHoverSound()}
                 className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-background to-muted/50 border border-border/50 shadow-sm transition-all hover:scale-105"
               >
