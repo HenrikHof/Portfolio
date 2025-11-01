@@ -52,10 +52,12 @@ function DialogContent({
   children,
   showCloseButton = true,
   noPadding = false,
+  disableDrag = false,
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Content> & {
   showCloseButton?: boolean
   noPadding?: boolean
+  disableDrag?: boolean
 }) {
   const dragControls = useDragControls()
   const constraintsRef = React.useRef<HTMLDivElement>(null)
@@ -70,7 +72,7 @@ function DialogContent({
         {...props}
       >
         <motion.div
-          drag
+          drag={disableDrag ? false : true}
           dragControls={dragControls}
           dragMomentum={false}
           dragElastic={0.1}
@@ -100,11 +102,13 @@ function DialogContent({
             left: '50%',
           }}
           className={cn(
-            'bg-background z-50 w-full sm:max-w-[calc(100%-2rem)] rounded-xl border border-border/50 shadow-2xl backdrop-blur-sm cursor-grab active:cursor-grabbing',
+            disableDrag 
+              ? 'bg-background z-50 w-full sm:max-w-[calc(100%-2rem)] rounded-xl border border-border/50 shadow-2xl backdrop-blur-sm cursor-default'
+              : 'bg-background z-50 w-full sm:max-w-[calc(100%-2rem)] rounded-xl border border-border/50 shadow-2xl backdrop-blur-sm cursor-grab active:cursor-grabbing',
             className,
           )}
           dragListener={false}
-          onPointerDown={(e) => {
+          onPointerDown={disableDrag ? undefined : (e) => {
             // Only start drag if clicking on the dialog itself, not on interactive elements
             const target = e.target as HTMLElement
             if (target.closest('a, button, input, textarea')) {

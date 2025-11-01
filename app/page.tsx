@@ -1178,9 +1178,10 @@ export default function Home() {
 
       <Dialog open={businessCardOpen} onOpenChange={setBusinessCardOpen}>
         <DialogContent 
-          className="!max-w-[90vw] sm:!max-w-[504px] !w-auto !p-6 sm:!p-8 !bg-transparent !border-none !shadow-none"
+          className="!max-w-[90vw] sm:!max-w-[504px] !w-auto !p-6 sm:!p-8 !bg-transparent !border-none !shadow-none !cursor-default"
           showCloseButton={false}
           noPadding={true}
+          disableDrag={true}
         >
           <DialogHeader className="sr-only">
             <DialogTitle>Business Card</DialogTitle>
@@ -1189,70 +1190,91 @@ export default function Home() {
           <div className="flex flex-col items-center gap-6">
             {/* Card container */}
             <div className="w-full max-w-[504px] aspect-[336/192] h-auto sm:h-[288px] p-0 m-0">
-              <CometCard 
-                rotateDepth={17.5}
-                translateDepth={20}
-                className="w-full h-full !m-0"
-              >
-                <div className="w-full h-full bg-background border border-border/50 p-4 sm:p-6 flex flex-col justify-between relative overflow-hidden rounded-2xl">
-                  <div className="relative z-10 space-y-2 sm:space-y-3">
+              {/* Desktop: Use CometCard with tilt effect */}
+              <div className="hidden sm:block w-full h-full">
+                <CometCard 
+                  rotateDepth={17.5}
+                  translateDepth={20}
+                  className="w-full h-full !m-0"
+                >
+                  <div className="w-full h-full bg-background border border-border/50 p-4 sm:p-6 flex flex-col justify-between relative overflow-hidden rounded-2xl">
+                    <div className="relative z-10 space-y-2 sm:space-y-3">
+                      {/* Name - matching homepage style */}
+                      <div className="space-y-0">
+                        <h2 className="text-2xl sm:text-3xl font-light tracking-tight leading-none">
+                          Henrik
+                        </h2>
+                        <h2 className="text-2xl sm:text-3xl font-light tracking-tight leading-none text-muted-foreground">
+                          Hof
+                        </h2>
+                      </div>
+
+                      {/* Description - matching homepage style */}
+                      <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                        Software architect delivering custom software and human‑centered AI with
+                        <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-foreground bg-clip-text text-transparent font-medium dark:from-purple-300 dark:via-pink-300"> Next.js</span> and
+                        <span className="text-[#61DAFB] font-medium"> React Development</span>. Zero Friction, Just Results.
+                      </p>
+
+                      {/* Contact Info - matching homepage bullet point style */}
+                      <div className="space-y-1 sm:space-y-1.5">
+                        <div className="flex items-center gap-2 sm:gap-3 text-muted-foreground">
+                          <Mail className="h-3 w-3 sm:h-4 sm:w-4 text-foreground flex-shrink-0" />
+                          <span className="text-xs sm:text-sm truncate">kontakt@henrikhof.com</span>
+                        </div>
+                        <div className="flex items-center gap-2 sm:gap-3 text-muted-foreground">
+                          <MessageCircle className="h-3 w-3 sm:h-4 sm:w-4 text-foreground flex-shrink-0" />
+                          <span className="text-xs sm:text-sm">+351 963 429 170</span>
+                        </div>
+                        <div className="flex items-center gap-2 sm:gap-3 text-muted-foreground">
+                          <Globe className="h-3 w-3 sm:h-4 sm:w-4 text-foreground flex-shrink-0" />
+                          <span className="text-xs sm:text-sm">henrikhof.com</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CometCard>
+              </div>
+              
+              {/* Mobile: Plain card without tilt effect */}
+              <div className="sm:hidden w-full h-full">
+                <div className="w-full h-full bg-background border border-border/50 p-4 flex flex-col justify-between relative overflow-hidden rounded-2xl">
+                  <div className="relative z-10 space-y-2">
                     {/* Name - matching homepage style */}
                     <div className="space-y-0">
-                      <h2 className="text-2xl sm:text-3xl font-light tracking-tight leading-none">
+                      <h2 className="text-2xl font-light tracking-tight leading-none">
                         Henrik
                       </h2>
-                      <h2 className="text-2xl sm:text-3xl font-light tracking-tight leading-none text-muted-foreground">
+                      <h2 className="text-2xl font-light tracking-tight leading-none text-muted-foreground">
                         Hof
                       </h2>
                     </div>
 
                     {/* Description - matching homepage style */}
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-xs text-muted-foreground leading-relaxed">
                       Software architect delivering custom software and human‑centered AI with
                       <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-foreground bg-clip-text text-transparent font-medium dark:from-purple-300 dark:via-pink-300"> Next.js</span> and
                       <span className="text-[#61DAFB] font-medium"> React Development</span>. Zero Friction, Just Results.
                     </p>
 
                     {/* Contact Info - matching homepage bullet point style */}
-                    <div className="space-y-1 sm:space-y-1.5">
-                      <div className="flex items-center gap-2 sm:gap-3 text-muted-foreground">
-                        <Mail className="h-3 w-3 sm:h-4 sm:w-4 text-foreground flex-shrink-0" />
-                        <a 
-                          href="mailto:kontakt@henrikhof.com" 
-                          className="text-xs sm:text-sm hover:text-foreground transition-colors truncate"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          kontakt@henrikhof.com
-                        </a>
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2 text-muted-foreground">
+                        <Mail className="h-3 w-3 text-foreground flex-shrink-0" />
+                        <span className="text-xs truncate">kontakt@henrikhof.com</span>
                       </div>
-                      <div className="flex items-center gap-2 sm:gap-3 text-muted-foreground">
-                        <MessageCircle className="h-3 w-3 sm:h-4 sm:w-4 text-foreground flex-shrink-0" />
-                        <a 
-                          href="https://wa.me/351963429170" 
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs sm:text-sm hover:text-foreground transition-colors"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          +351 963 429 170
-                        </a>
+                      <div className="flex items-center gap-2 text-muted-foreground">
+                        <MessageCircle className="h-3 w-3 text-foreground flex-shrink-0" />
+                        <span className="text-xs">+351 963 429 170</span>
                       </div>
-                      <div className="flex items-center gap-2 sm:gap-3 text-muted-foreground">
-                        <Globe className="h-3 w-3 sm:h-4 sm:w-4 text-foreground flex-shrink-0" />
-                        <a 
-                          href="https://henrikhof.com" 
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-xs sm:text-sm hover:text-foreground transition-colors"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          henrikhof.com
-                        </a>
+                      <div className="flex items-center gap-2 text-muted-foreground">
+                        <Globe className="h-3 w-3 text-foreground flex-shrink-0" />
+                        <span className="text-xs">henrikhof.com</span>
                       </div>
                     </div>
                   </div>
                 </div>
-              </CometCard>
+              </div>
             </div>
             
             {/* Close button positioned outside and below the card */}
