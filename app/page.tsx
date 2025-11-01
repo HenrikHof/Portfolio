@@ -383,7 +383,7 @@ export default function Home() {
       </nav>
 
       <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16 relative">
-        <header id="intro" ref={(el) => { sectionsRef.current[0] = el }} className="min-h-screen flex items-center relative overflow-hidden">
+        <header id="intro" ref={(el) => { sectionsRef.current[0] = el }} className="min-h-screen flex items-center relative overflow-hidden pt-16 sm:pt-0">
           {/* Subtle background beams effect - very low opacity for professional look */}
           <BackgroundBeams className="opacity-[0.15] dark:opacity-[0.08] pointer-events-none" />
           <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full relative z-10">
@@ -1002,7 +1002,7 @@ export default function Home() {
       <FloatingDock items={floatingDockItems} />
 
       <Dialog open={scheduleOpen} onOpenChange={setScheduleOpen}>
-        <DialogContent className="!max-w-md !w-auto">
+        <DialogContent className="!max-w-md !w-full sm:!w-auto !mx-4 sm:!mx-auto">
           <DialogHeader>
             <DialogTitle className="text-2xl font-light">Schedule a Consultation</DialogTitle>
             <DialogDescription className="text-base text-muted-foreground/80 mt-2">
