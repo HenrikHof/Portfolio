@@ -1178,7 +1178,7 @@ export default function Home() {
 
       <Dialog open={businessCardOpen} onOpenChange={setBusinessCardOpen}>
         <DialogContent 
-          className="!max-w-[90vw] sm:!max-w-[504px] !w-auto !p-6 sm:!p-8 !bg-transparent !border-none !shadow-none !cursor-default"
+          className="!max-w-[95vw] sm:!max-w-[504px] !w-auto !p-3 sm:!p-8 !bg-transparent !border-none !shadow-none !cursor-default !max-h-[95vh] !overflow-y-auto sm:!max-h-none sm:!overflow-y-visible"
           showCloseButton={false}
           noPadding={true}
           disableDrag={true}
@@ -1187,9 +1187,9 @@ export default function Home() {
             <DialogTitle>Business Card</DialogTitle>
           </DialogHeader>
           {/* Business Card: 1.5x size = 504px x 288px (scaled up from 3.5" x 2") */}
-          <div className="flex flex-col items-center gap-6">
+          <div className="flex flex-col items-center gap-4 sm:gap-6">
             {/* Card container */}
-            <div className="w-full max-w-[504px] aspect-[336/192] h-auto sm:h-[288px] p-0 m-0">
+            <div className="w-full max-w-[90vw] sm:max-w-[504px] aspect-[336/192] h-auto sm:h-[288px] p-0 m-0">
               {/* Desktop: Use CometCard with tilt effect */}
               <div className="hidden sm:block w-full h-full">
                 <CometCard 
