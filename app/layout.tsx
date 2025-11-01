@@ -25,6 +25,25 @@ export const metadata: Metadata = {
     "software consulting"
   ],
   authors: [{ name: "Henrik Hof" }],
+  icons: {
+    icon: [
+      { url: "/hhportfolioicon.png", sizes: "32x32", type: "image/png" },
+      { url: "/hhportfolioicon.png", sizes: "192x192", type: "image/png" },
+      { url: "/hhportfolioicon.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/hhportfolioicon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/hhportfolioicon.png",
+    other: [
+      {
+        rel: "mask-icon",
+        url: "/hhportfolioicon.png",
+        color: "#000000",
+      },
+    ],
+  },
+  manifest: "/manifest.json",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -39,13 +58,22 @@ export const metadata: Metadata = {
         height: 1200,
         alt: "Henrik Hof - Software architect delivering custom software and human‑centered AI",
       },
+      {
+        url: "https://henrikhof.com/hhportfolioicon.png",
+        width: 1024,
+        height: 1024,
+        alt: "Henrik Hof Portfolio Icon",
+      },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Henrik Hof - Software architect delivering custom software and human‑centered AI",
     description: "Software architect delivering custom software and human‑centered AI. Zero Friction, Just Results.",
-    images: ["https://henrikhof.com/henrikhof.jpg"],
+    images: [
+      "https://henrikhof.com/henrikhof.jpg",
+      "https://henrikhof.com/hhportfolioicon.png",
+    ],
   },
   alternates: {
     canonical: "https://henrikhof.com",

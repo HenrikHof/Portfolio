@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /management-panel
+
+Sitemap: https://henrikhof.com/sitemap.xml
+
