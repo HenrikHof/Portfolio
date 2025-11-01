@@ -115,46 +115,16 @@ export default function RootLayout({
           {`
             (function() {
               const styles = {
-                title: 'font-size: 24px; font-weight: bold; color: #3b82f6; font-family: monospace;',
-                subtitle: 'font-size: 14px; color: #64748b; font-family: monospace;',
-                message: 'font-size: 13px; color: #0f172a; font-family: monospace; line-height: 1.6;',
-                highlight: 'font-size: 13px; color: #3b82f6; font-weight: bold; font-family: monospace;',
-                link: 'font-size: 13px; color: #3b82f6; font-family: monospace; text-decoration: underline;',
-                divider: 'color: #cbd5e1; font-family: monospace;',
-                emoji: 'font-size: 16px;'
+                title: 'font-size: 32px; font-weight: bold; color: #3b82f6; text-shadow: 2px 2px 4px rgba(59,130,246,0.3);',
+                message: 'font-size: 15px; color: #60a5fa; font-weight: 500;',
+                highlight: 'font-size: 14px; color: #93c5fd; font-weight: normal;',
+                link: 'font-size: 15px; color: #34d399; font-weight: bold;',
               };
 
-              console.clear();
-              console.log('%c╔═══════════════════════════════════════════════════════════════╗', styles.divider);
-              console.log('%c║                                                               ║', styles.divider);
-              console.log('%c║   %cHey there, fellow developer! 👋%c                           ║', styles.divider, styles.title, styles.divider);
-              console.log('%c║                                                               ║', styles.divider);
-              console.log('%c╚═══════════════════════════════════════════════════════════════╝', styles.divider);
-              console.log('');
-              console.log('%c✨ Nice to meet you!', styles.highlight);
-              console.log('');
-              console.log('%cIf you\\'re reading this, we\\'re probably alike —', styles.message);
-              console.log('%ccurious, detail-oriented, and always looking under the hood.', styles.message);
-              console.log('');
-              console.log('%c💡 Fun fact:', styles.highlight);
-              console.log('%cWhile most people see a website, you see the architecture,', styles.message);
-              console.log('%cthe patterns, the possibilities. That\\'s what I love about this craft.', styles.message);
-              console.log('');
-              console.log('%c🚀 About this site:', styles.highlight);
-              console.log('%c• Built with Next.js 15 & React 19', styles.message);
-              console.log('%c• Styled with Tailwind CSS', styles.message);
-              console.log('%c• Deployed on Vercel', styles.message);
-              console.log('%c• Crafted with attention to detail', styles.message);
-              console.log('');
-              console.log('%c💬 Let\\'s connect:', styles.highlight);
-              console.log('%cI\\'m always interested in talking tech, collaboration, or just', styles.message);
-              console.log('%cgeeking out about clean code and great UX.', styles.message);
-              console.log('');
-              console.log('%c📬 Reach out: %chttps://henrikhof.com', styles.message, styles.link);
-              console.log('');
-              console.log('%c════════════════════════════════════════════════════════════════', styles.divider);
-              console.log('%cP.S. Yes, I know you can see the source code. Feel free to peek! 😊', styles.subtitle);
-              console.log('%c════════════════════════════════════════════════════════════════', styles.divider);
+              console.log('%c👋 Hey there, fellow developer!', styles.title);
+              console.log('%cIf you\\'re reading this, we\\'re probably alike. Let\\'s connect!', styles.message);
+              console.log('%cBuilt with Next.js 15 • React 19 • Tailwind CSS', styles.highlight);
+              console.log('%c📧 kontakt@henrikhof.com  |  💬 +351 963 429 170', styles.link);
             })();
           `}
         </Script>
