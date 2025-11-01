@@ -1002,7 +1002,7 @@ export default function Home() {
       <FloatingDock items={floatingDockItems} />
 
       <Dialog open={scheduleOpen} onOpenChange={setScheduleOpen}>
-        <DialogContent className="!max-w-md !w-full sm:!w-auto !mx-4 sm:!mx-auto">
+        <DialogContent className="!max-w-md !w-[calc(100vw-1rem)] sm:!max-w-md sm:!w-auto !mx-2 sm:!mx-auto !max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="text-2xl font-light">Schedule a Consultation</DialogTitle>
             <DialogDescription className="text-base text-muted-foreground/80 mt-2">

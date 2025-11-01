@@ -163,7 +163,7 @@ export function FloatingDock({
           mobileClassName,
         )}
       >
-        {items.slice(0, 5).map((item, index) => (
+        {items.filter(item => item.title !== "About" && item.title !== "Services").map((item, index) => (
           <div key={`${item.href}-${index}`} className="flex flex-col items-center">
             {item.onClick ? (
               <button
