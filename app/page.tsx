@@ -6,7 +6,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 import { motion, useInView, useScroll } from "framer-motion"
-import { Calendar, MessageCircle, Zap, Smartphone, Layers, Search, Users, Network, ExternalLink, Play, Wrench, Brain, TrendingUp, Globe, Mail, X } from "lucide-react"
+import { Calendar, MessageCircle, Zap, Smartphone, Layers, Search, Users, Network, ExternalLink, Play, Wrench, Brain, TrendingUp, Globe, Mail, X, Sun, Moon } from "lucide-react"
 import { playButtonClickSound } from "@/lib/sounds"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -38,6 +38,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 import { CometCard } from "@/components/ui/comet-card"
+import { BackgroundBeams } from "@/components/ui/background-beams"
+import { TracingBeam } from "@/components/ui/tracing-beam"
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -209,6 +211,16 @@ export default function Home() {
       href: "#connect",
       onClick: () => scrollToSection("connect"),
     },
+    {
+      title: isDark ? "Light Mode" : "Dark Mode",
+      icon: isDark ? (
+        <Sun className="h-full w-full text-muted-foreground" />
+      ) : (
+        <Moon className="h-full w-full text-muted-foreground" />
+      ),
+      href: "#",
+      onClick: toggleTheme,
+    },
   ]
 
   return (
@@ -370,9 +382,11 @@ export default function Home() {
         </div>
       </nav>
 
-      <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16">
-        <header id="intro" ref={(el) => { sectionsRef.current[0] = el }} className="min-h-screen flex items-center">
-          <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full">
+      <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16 relative">
+        <header id="intro" ref={(el) => { sectionsRef.current[0] = el }} className="min-h-screen flex items-center relative overflow-hidden">
+          {/* Subtle background beams effect - very low opacity for professional look */}
+          <BackgroundBeams className="opacity-[0.15] dark:opacity-[0.08] pointer-events-none" />
+          <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -623,7 +637,8 @@ export default function Home() {
               No fluff. Clear steps, steady delivery, measurable outcomes.
             </p>
 
-            <div className="space-y-8 sm:space-y-12">
+            <TracingBeam className="max-w-4xl">
+              <div className="space-y-8 sm:space-y-12">
               {[
                 {
                   step: "01",
@@ -679,7 +694,8 @@ export default function Home() {
                   </div>
                 </motion.div>
               ))}
-            </div>
+              </div>
+            </TracingBeam>
           </div>
         </AnimatedSection>
 
