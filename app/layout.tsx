@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Geist } from "next/font/google"
 import Script from "next/script"
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
 const geist = Geist({
@@ -111,6 +112,7 @@ export default function RootLayout({
     <html lang="en" className={`${geist.variable}`}>
       <body className="font-sans antialiased">
         {children}
+        <Analytics />
         <Script id="console-message" strategy="afterInteractive">
           {`
             (function() {
