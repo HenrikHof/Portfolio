@@ -206,12 +206,6 @@ export default function Home() {
       onClick: () => setWhatsappDialogOpen(true),
     },
     {
-      title: "Connect",
-      icon: <IconSettings className="h-full w-full text-muted-foreground" />,
-      href: "#connect",
-      onClick: () => scrollToSection("connect"),
-    },
-    {
       title: isDark ? "Light Mode" : "Dark Mode",
       icon: isDark ? (
         <Sun className="h-full w-full text-muted-foreground" />
@@ -1081,7 +1075,7 @@ export default function Home() {
       </Dialog>
 
       <Dialog open={whatsappDialogOpen} onOpenChange={setWhatsappDialogOpen}>
-        <DialogContent className="!max-w-md !w-auto">
+        <DialogContent className="!max-w-md !w-[calc(100vw-1rem)] sm:!max-w-md sm:!w-auto !mx-2 sm:!mx-auto !max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <div className="flex items-center gap-3 mb-2">
               <div className="p-2 rounded-lg bg-[#25D366]/10 border border-[#25D366]/20">
