@@ -51,9 +51,11 @@ function DialogContent({
   className,
   children,
   showCloseButton = true,
+  noPadding = false,
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Content> & {
   showCloseButton?: boolean
+  noPadding?: boolean
 }) {
   const dragControls = useDragControls()
   const constraintsRef = React.useRef<HTMLDivElement>(null)
@@ -111,9 +113,13 @@ function DialogContent({
             dragControls.start(e)
           }}
         >
-          <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
-            {children}
-          </div>
+          {noPadding ? (
+            children
+          ) : (
+            <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
+              {children}
+            </div>
+          )}
           {showCloseButton && (
             <DialogPrimitive.Close
               data-slot="dialog-close"

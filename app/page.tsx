@@ -6,7 +6,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 import { motion, useInView, useScroll } from "framer-motion"
-import { Calendar, MessageCircle, Zap, Smartphone, Layers, Search, Users, Network, ExternalLink, Play, Wrench, Brain, TrendingUp, Globe, Mail } from "lucide-react"
+import { Calendar, MessageCircle, Zap, Smartphone, Layers, Search, Users, Network, ExternalLink, Play, Wrench, Brain, TrendingUp, Globe, Mail, X } from "lucide-react"
 import { playButtonClickSound } from "@/lib/sounds"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -1167,73 +1167,94 @@ export default function Home() {
       </Dialog>
 
       <Dialog open={businessCardOpen} onOpenChange={setBusinessCardOpen}>
-        <DialogContent className="!max-w-[336px] !w-auto !p-6">
-          {/* Business Card: 3.5" x 2" = 336px x 192px */}
-          <CometCard 
-            rotateDepth={17.5}
-            translateDepth={20}
-            className="w-[336px] h-[192px]"
-          >
-            <div className="w-full h-full bg-gradient-to-br from-background to-muted/20 border border-border/50 p-6 flex flex-col justify-between relative overflow-hidden rounded-2xl">
-              {/* Decorative background element */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-muted/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-              
-              <div className="relative z-10 space-y-2">
-                {/* Name */}
-                <h2 className="text-2xl font-bold leading-tight">Henrik Hof</h2>
-                
-                {/* Title */}
-                <p className="text-sm text-muted-foreground font-medium leading-snug">
-                  Software Architect
-                </p>
-                
-                {/* Tagline */}
-                <p className="text-xs text-muted-foreground/80 italic mt-1">
-                  Zero Friction, Just Results
-                </p>
-              </div>
+        <DialogContent 
+          className="!max-w-[90vw] sm:!max-w-[504px] !w-auto !p-6 sm:!p-8 !bg-transparent !border-none !shadow-none"
+          showCloseButton={false}
+          noPadding={true}
+        >
+          <DialogHeader className="sr-only">
+            <DialogTitle>Business Card</DialogTitle>
+          </DialogHeader>
+          {/* Business Card: 1.5x size = 504px x 288px (scaled up from 3.5" x 2") */}
+          <div className="flex flex-col items-center gap-6">
+            {/* Card container */}
+            <div className="w-full max-w-[504px] aspect-[336/192] h-auto sm:h-[288px] p-0 m-0">
+              <CometCard 
+                rotateDepth={17.5}
+                translateDepth={20}
+                className="w-full h-full !m-0"
+              >
+                <div className="w-full h-full bg-background border border-border/50 p-4 sm:p-6 flex flex-col justify-between relative overflow-hidden rounded-2xl">
+                  <div className="relative z-10 space-y-2 sm:space-y-3">
+                    {/* Name - matching homepage style */}
+                    <div className="space-y-0">
+                      <h2 className="text-2xl sm:text-3xl font-light tracking-tight leading-none">
+                        Henrik
+                      </h2>
+                      <h2 className="text-2xl sm:text-3xl font-light tracking-tight leading-none text-muted-foreground">
+                        Hof
+                      </h2>
+                    </div>
 
-              {/* Contact Info */}
-              <div className="relative z-10 space-y-1.5 text-xs">
-                <div className="flex items-center gap-2">
-                  <Mail className="h-3 w-3 text-muted-foreground flex-shrink-0" />
-                  <a 
-                    href="mailto:kontakt@henrikhof.com" 
-                    className="text-foreground hover:text-primary transition-colors truncate"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    kontakt@henrikhof.com
-                  </a>
+                    {/* Description - matching homepage style */}
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      Software architect delivering custom software and human‑centered AI with
+                      <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-foreground bg-clip-text text-transparent font-medium dark:from-purple-300 dark:via-pink-300"> Next.js</span> and
+                      <span className="text-[#61DAFB] font-medium"> React Development</span>. Zero Friction, Just Results.
+                    </p>
+
+                    {/* Contact Info - matching homepage bullet point style */}
+                    <div className="space-y-1 sm:space-y-1.5">
+                      <div className="flex items-center gap-2 sm:gap-3 text-muted-foreground">
+                        <Mail className="h-3 w-3 sm:h-4 sm:w-4 text-foreground flex-shrink-0" />
+                        <a 
+                          href="mailto:kontakt@henrikhof.com" 
+                          className="text-xs sm:text-sm hover:text-foreground transition-colors truncate"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          kontakt@henrikhof.com
+                        </a>
+                      </div>
+                      <div className="flex items-center gap-2 sm:gap-3 text-muted-foreground">
+                        <MessageCircle className="h-3 w-3 sm:h-4 sm:w-4 text-foreground flex-shrink-0" />
+                        <a 
+                          href="https://wa.me/351963429170" 
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs sm:text-sm hover:text-foreground transition-colors"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          +351 963 429 170
+                        </a>
+                      </div>
+                      <div className="flex items-center gap-2 sm:gap-3 text-muted-foreground">
+                        <Globe className="h-3 w-3 sm:h-4 sm:w-4 text-foreground flex-shrink-0" />
+                        <a 
+                          href="https://henrikhof.com" 
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs sm:text-sm hover:text-foreground transition-colors"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          henrikhof.com
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Smartphone className="h-3 w-3 text-muted-foreground flex-shrink-0" />
-                  <a 
-                    href="tel:+351963429170" 
-                    className="text-foreground hover:text-primary transition-colors"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    +351 963 429 170
-                  </a>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Globe className="h-3 w-3 text-muted-foreground flex-shrink-0" />
-                  <a 
-                    href="https://henrikhof.com" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-foreground hover:text-primary transition-colors"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    henrikhof.com
-                  </a>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Network className="h-3 w-3 text-muted-foreground flex-shrink-0" />
-                  <span className="text-muted-foreground">Portugal</span>
-                </div>
-              </div>
+              </CometCard>
             </div>
-          </CometCard>
+            
+            {/* Close button positioned outside and below the card */}
+            <button
+              onClick={() => setBusinessCardOpen(false)}
+              className="w-full sm:w-auto px-6 py-3 rounded-lg bg-background/90 backdrop-blur-sm border border-border/50 shadow-lg hover:bg-background transition-all duration-200 hover:scale-105 flex items-center justify-center gap-2 group font-medium text-sm sm:text-base"
+              aria-label="Close preview"
+            >
+              <X className="h-4 w-4 text-foreground/70 group-hover:text-foreground transition-colors" />
+              <span className="text-foreground/90 group-hover:text-foreground transition-colors">Close preview</span>
+            </button>
+          </div>
         </DialogContent>
       </Dialog>
       </div>
