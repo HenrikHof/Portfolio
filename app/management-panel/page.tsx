@@ -16,9 +16,19 @@ function ManagementPanelContent() {
     // For security, use a strong hash
     const expectedKey = process.env.NEXT_PUBLIC_ADMIN_SECRET_KEY || 'your-secret-key-here'
     
+    // Debug: log to console (remove in production)
+    console.log('Secret key check:', { 
+      provided: secretKey, 
+      expected: expectedKey, 
+      match: secretKey === expectedKey 
+    })
+    
     if (!secretKey || secretKey !== expectedKey) {
-      // Redirect immediately
-      router.push('/')
+      // Redirect after a brief delay to show what's happening
+      setTimeout(() => {
+        router.push('/')
+      }, 100)
+      setIsValidKey(false)
       return
     }
 
