@@ -6,7 +6,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 import { motion, useInView, useScroll } from "framer-motion"
-import { Calendar, MessageCircle, Zap, Smartphone, Layers, Search, Users, Network, ExternalLink, Play, Wrench, Brain, TrendingUp, Globe } from "lucide-react"
+import { Calendar, MessageCircle, Zap, Smartphone, Layers, Search, Users, Network, ExternalLink, Play, Wrench, Brain, TrendingUp, Globe, Mail } from "lucide-react"
 import { playButtonClickSound } from "@/lib/sounds"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -27,6 +27,7 @@ import {
   IconUser,
   IconBriefcase,
   IconSettings,
+  IconId,
 } from "@tabler/icons-react"
 import { FloatingDock } from "@/components/ui/floating-dock"
 import {
@@ -36,6 +37,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
+import { CometCard } from "@/components/ui/comet-card"
 
 const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -51,6 +53,7 @@ export default function Home() {
   const [scheduleOpen, setScheduleOpen] = useState(false)
   const [whatsappDialogOpen, setWhatsappDialogOpen] = useState(false)
   const [videoDialogOpen, setVideoDialogOpen] = useState(false)
+  const [businessCardOpen, setBusinessCardOpen] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitSuccess, setSubmitSuccess] = useState(false)
   const sectionsRef = useRef<(HTMLElement | null)[]>([])
@@ -187,6 +190,12 @@ export default function Home() {
       icon: <Calendar className="h-full w-full text-muted-foreground" />,
       href: "#connect",
       onClick: () => setScheduleOpen(true),
+    },
+    {
+      title: "Business Card",
+      icon: <IconId className="h-full w-full text-muted-foreground" />,
+      href: "#",
+      onClick: () => setBusinessCardOpen(true),
     },
     {
       title: "WhatsApp",
@@ -1154,6 +1163,77 @@ export default function Home() {
               </button>
             </div>
           </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={businessCardOpen} onOpenChange={setBusinessCardOpen}>
+        <DialogContent className="!max-w-[336px] !w-auto !p-6">
+          {/* Business Card: 3.5" x 2" = 336px x 192px */}
+          <CometCard 
+            rotateDepth={17.5}
+            translateDepth={20}
+            className="w-[336px] h-[192px]"
+          >
+            <div className="w-full h-full bg-gradient-to-br from-background to-muted/20 border border-border/50 p-6 flex flex-col justify-between relative overflow-hidden rounded-2xl">
+              {/* Decorative background element */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-muted/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+              
+              <div className="relative z-10 space-y-2">
+                {/* Name */}
+                <h2 className="text-2xl font-bold leading-tight">Henrik Hof</h2>
+                
+                {/* Title */}
+                <p className="text-sm text-muted-foreground font-medium leading-snug">
+                  Software Architect
+                </p>
+                
+                {/* Tagline */}
+                <p className="text-xs text-muted-foreground/80 italic mt-1">
+                  Zero Friction, Just Results
+                </p>
+              </div>
+
+              {/* Contact Info */}
+              <div className="relative z-10 space-y-1.5 text-xs">
+                <div className="flex items-center gap-2">
+                  <Mail className="h-3 w-3 text-muted-foreground flex-shrink-0" />
+                  <a 
+                    href="mailto:kontakt@henrikhof.com" 
+                    className="text-foreground hover:text-primary transition-colors truncate"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    kontakt@henrikhof.com
+                  </a>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Smartphone className="h-3 w-3 text-muted-foreground flex-shrink-0" />
+                  <a 
+                    href="tel:+351963429170" 
+                    className="text-foreground hover:text-primary transition-colors"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    +351 963 429 170
+                  </a>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Globe className="h-3 w-3 text-muted-foreground flex-shrink-0" />
+                  <a 
+                    href="https://henrikhof.com" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground hover:text-primary transition-colors"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    henrikhof.com
+                  </a>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Network className="h-3 w-3 text-muted-foreground flex-shrink-0" />
+                  <span className="text-muted-foreground">Portugal</span>
+                </div>
+              </div>
+            </div>
+          </CometCard>
         </DialogContent>
       </Dialog>
       </div>

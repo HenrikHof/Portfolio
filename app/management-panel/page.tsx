@@ -12,9 +12,8 @@ function ManagementPanelContent() {
   useEffect(() => {
     const secretKey = searchParams.get('secretkey')
     
-    // Check secret key - you should set this in your environment
-    // For security, use a strong hash
-    const expectedKey = process.env.NEXT_PUBLIC_ADMIN_SECRET_KEY || 'your-secret-key-here'
+    // Check secret key - defaults to 9877 if not set in environment
+    const expectedKey = process.env.NEXT_PUBLIC_ADMIN_SECRET_KEY || '9877'
     
     // Debug: log to console (remove in production)
     console.log('Secret key check:', { 
