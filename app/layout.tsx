@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Geist } from "next/font/google"
+import Script from "next/script"
 import "./globals.css"
 
 const geist = Geist({

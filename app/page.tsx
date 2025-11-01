@@ -378,8 +378,8 @@ export default function Home() {
 
       <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16 relative">
         <header id="intro" ref={(el) => { sectionsRef.current[0] = el }} className="min-h-screen flex items-center relative overflow-hidden pt-16 sm:pt-0">
-          {/* Subtle background beams effect - very low opacity for professional look */}
-          <BackgroundBeams className="opacity-[0.15] dark:opacity-[0.08] pointer-events-none" />
+          {/* Subtle background beams effect - very low opacity for professional look - Desktop only for performance */}
+          <BackgroundBeams className="hidden sm:block opacity-[0.15] dark:opacity-[0.08] pointer-events-none" />
           <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -428,7 +428,7 @@ export default function Home() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0.15 }}>
                     <button
                       onClick={() => {
                         playButtonClickSound()
@@ -440,7 +440,7 @@ export default function Home() {
                       <span className="whitespace-nowrap">Schedule Consultation</span>
                     </button>
                   </motion.div>
-                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0.15 }}>
                     <button
                       onClick={() => {
                         playButtonClickSound()
@@ -472,9 +472,9 @@ export default function Home() {
                 />
                 <div className="absolute top-4 right-4">
                   <div className="relative">
-                    <div className="absolute inset-0 rounded-full border border-foreground/30 animate-ripple-1"></div>
-                    <div className="absolute inset-0 rounded-full border border-foreground/30 animate-ripple-2"></div>
-                    <div className="absolute inset-0 rounded-full border border-foreground/30 animate-ripple-3"></div>
+                    <div className="hidden sm:block absolute inset-0 rounded-full border border-foreground/30 animate-ripple-1"></div>
+                    <div className="hidden sm:block absolute inset-0 rounded-full border border-foreground/30 animate-ripple-2"></div>
+                    <div className="hidden sm:block absolute inset-0 rounded-full border border-foreground/30 animate-ripple-3"></div>
                     <button
                       onClick={() => {
                         playButtonClickSound()
@@ -631,8 +631,10 @@ export default function Home() {
               No fluff. Clear steps, steady delivery, measurable outcomes.
             </p>
 
-            <TracingBeam className="max-w-4xl">
-              <div className="space-y-8 sm:space-y-12">
+            {/* TracingBeam on desktop only for performance */}
+            <div className="hidden sm:block">
+              <TracingBeam className="max-w-4xl">
+                <div className="space-y-8 sm:space-y-12">
               {[
                 {
                   step: "01",
@@ -688,8 +690,55 @@ export default function Home() {
                   </div>
                 </motion.div>
               ))}
-              </div>
-            </TracingBeam>
+                </div>
+              </TracingBeam>
+            </div>
+            
+            {/* Mobile: Static version without TracingBeam for performance */}
+            <div className="sm:hidden space-y-8 sm:space-y-12">
+              {[
+                {
+                  step: "01",
+                  title: "Foundation",
+                  description: "We align on goals, user flows, and success metrics. No fluff, just the blueprint for what ships."
+                },
+                {
+                  step: "02",
+                  title: "Prototype",
+                  description: "Fast iterations on design or MVP. Try it, break it, refine. You see real progress, not slide decks."
+                },
+                {
+                  step: "03",
+                  title: "Build",
+                  description: "Architecture, code, polish. Modern stack, tested end‑to‑end, performance‑first from day one."
+                },
+                {
+                  step: "04",
+                  title: "Launch & Beyond",
+                  description: "Go live with confidence. I handle deployment, monitoring, and stay around for iteration—because v1 is just the start."
+                },
+              ].map((phase, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  className="grid lg:grid-cols-5 gap-4 lg:gap-8 group"
+                >
+                  <div className="lg:col-span-2">
+                    <div className="text-xl sm:text-2xl font-light text-muted-foreground group-hover:text-foreground transition-colors duration-500">
+                      {phase.step}
+                    </div>
+                  </div>
+
+                  <div className="lg:col-span-3 space-y-2">
+                    <h3 className="text-lg sm:text-xl font-medium">{phase.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed max-w-2xl">{phase.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </AnimatedSection>
 
@@ -875,7 +924,7 @@ export default function Home() {
                 </p>
 
                 <div className="space-y-4">
-                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} transition={{ duration: 0.15 }}>
                     <button
                       onClick={() => setScheduleOpen(true)}
                       className="group flex items-center gap-3 text-foreground hover:text-muted-foreground transition-colors duration-300"
@@ -1189,7 +1238,7 @@ export default function Home() {
           {/* Business Card: 1.5x size = 504px x 288px (scaled up from 3.5" x 2") */}
           <div className="flex flex-col items-center gap-4 sm:gap-6">
             {/* Card container */}
-            <div className="w-full max-w-[90vw] sm:max-w-[504px] aspect-[336/192] h-auto sm:h-[288px] p-0 m-0">
+            <div className="w-full max-w-[90vw] sm:max-w-[504px] h-auto sm:aspect-[336/192] sm:h-[288px] p-0 m-0">
               {/* Desktop: Use CometCard with tilt effect */}
               <div className="hidden sm:block w-full h-full">
                 <CometCard 
@@ -1237,8 +1286,8 @@ export default function Home() {
               </div>
               
               {/* Mobile: Plain card without tilt effect */}
-              <div className="sm:hidden w-full h-full">
-                <div className="w-full h-full bg-background border border-border/50 p-4 flex flex-col justify-between relative overflow-hidden rounded-2xl">
+              <div className="sm:hidden w-full h-auto">
+                <div className="w-full h-auto bg-background border border-border/50 p-4 flex flex-col justify-between relative overflow-hidden rounded-2xl">
                   <div className="relative z-10 space-y-2">
                     {/* Name - matching homepage style */}
                     <div className="space-y-0">

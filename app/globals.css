@@ -167,3 +167,26 @@
     transform-style: preserve-3d;
   }
 }
+
+/* Mobile Safari performance optimizations */
+@media (max-width: 640px) {
+  /* Improve scroll performance on mobile */
+  body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: none;
+  }
+  
+  /* Hardware acceleration for smoother animations */
+  * {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* Hardware acceleration hints for key animated elements */
+.floating-dock,
+[data-radix-dialog-content] {
+  will-change: transform;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
