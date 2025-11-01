@@ -175,12 +175,6 @@
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-y: none;
   }
-  
-  /* Hardware acceleration for smoother animations */
-  * {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
 }
 
 /* Hardware acceleration hints for key animated elements */
