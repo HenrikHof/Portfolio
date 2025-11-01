@@ -1261,8 +1261,8 @@ export default function Home() {
                       {/* Description - matching homepage style */}
                       <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
                         Software architect delivering custom software and human‑centered AI with
-                        <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-foreground bg-clip-text text-transparent font-medium dark:from-purple-300 dark:via-pink-300"> Next.js</span> and
-                        <span className="text-[#61DAFB] font-medium"> React Development</span>. Zero Friction, Just Results.
+                        <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-foreground dark:from-purple-300 dark:via-pink-300 bg-clip-text text-transparent font-medium"> Next.js</span> and
+                        <span className="text-cyan-600 dark:text-[#61DAFB] font-medium"> React Development</span>. Zero Friction, Just Results.
                       </p>
 
                       {/* Contact Info - matching homepage bullet point style */}
@@ -1302,8 +1302,8 @@ export default function Home() {
                     {/* Description - matching homepage style */}
                     <p className="text-xs text-muted-foreground leading-relaxed">
                       Software architect delivering custom software and human‑centered AI with
-                      <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-foreground bg-clip-text text-transparent font-medium dark:from-purple-300 dark:via-pink-300"> Next.js</span> and
-                      <span className="text-[#61DAFB] font-medium"> React Development</span>. Zero Friction, Just Results.
+                      <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-foreground dark:from-purple-300 dark:via-pink-300 bg-clip-text text-transparent font-medium"> Next.js</span> and
+                      <span className="text-cyan-600 dark:text-[#61DAFB] font-medium"> React Development</span>. Zero Friction, Just Results.
                     </p>
 
                     {/* Contact Info - matching homepage bullet point style */}
