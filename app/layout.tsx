@@ -110,9 +110,41 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geist.variable}`}>
+      <head>
+        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+      </head>
       <body className="font-sans antialiased">
         {children}
         <Analytics />
+        <Script 
+          src="https://assets.calendly.com/assets/external/widget.js" 
+          strategy="afterInteractive"
+        />
+        <Script id="calendly-badge" strategy="afterInteractive">
+          {`
+            (function() {
+              function initCalendlyBadge() {
+                if (typeof window !== 'undefined' && window.Calendly) {
+                  window.Calendly.initBadgeWidget({ 
+                    url: 'https://calendly.com/jphenrikhof/30min', 
+                    text: 'Schedule time with me', 
+                    color: '#0069ff', 
+                    textColor: '#ffffff', 
+                    branding: true 
+                  });
+                } else {
+                  setTimeout(initCalendlyBadge, 100);
+                }
+              }
+              
+              if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initCalendlyBadge);
+              } else {
+                initCalendlyBadge();
+              }
+            })();
+          `}
+        </Script>
         <Script id="console-message" strategy="afterInteractive">
           {`
             (function() {
