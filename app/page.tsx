@@ -590,7 +590,7 @@ export default function Home() {
                 { title: "Custom Software Development", description: "Next.js/React, Node.js, and cloud services to build products, internal tools, and APIs that fit your workflows." },
                 { title: "AI Augmentation (Human‑in‑the‑Loop)", description: "Copilots, automations, and decision support that keep people in control while multiplying throughput." },
                 { title: "Workflow Automation & Integration", description: "Connect CRMs, ERPs, data pipelines, and third‑party APIs to eliminate swivel‑chair work." },
-                { title: "DevOps, SRE & Observability", description: "CI/CD, IaC, cost‑aware scaling, and metrics that make reliability and iteration speed the default." },
+                { title: "DevOps, SRE & Observability", description: "Infrastructure setup, cost‑aware scaling, and metrics that make reliability and iteration speed the default." },
               ].map((service, index) => (
                 <motion.div
                   key={index}
@@ -652,7 +652,7 @@ export default function Home() {
                   step: "03",
                   title: "Build & Integrate",
                   description:
-                    "Ship iteratively with strong engineering practices: clean, functional code; automated testing; CI/CD; and observability from day one.",
+                    "Ship iteratively with strong engineering practices: clean, functional code; automated testing; and observability from day one.",
                 },
                 {
                   step: "04",
@@ -761,12 +761,12 @@ export default function Home() {
                   tech: ["Node.js", "PostgreSQL", "GraphQL", "REST APIs"],
                 },
                 {
-                  category: "Cloud & DevOps",
-                  tech: ["AWS", "Docker", "CI/CD", "Vercel"],
+                  category: "Cloud & Infrastructure",
+                  tech: ["Vercel", "Firebase", "Firestore", "Firebase Auth", "Firebase Functions", "Firebase Storage", "Cloudflare", "CDN", "Hosting", "DNS Management", "Domain Management"],
                 },
                 {
                   category: "Tools & Platforms",
-                  tech: ["Git", "Figma", "Postman", "Analytics"],
+                  tech: ["Git", "Analytics", "Performance Monitoring", "Error Tracking"],
                 },
               ].map((group, index) => (
                 <motion.div
@@ -860,7 +860,7 @@ export default function Home() {
                 {
                   title: "Scale by Design",
                   description:
-                    "Infrastructure‑as‑Code, CI/CD, observability, and clean functional code so the system stays fast and affordable as you grow.",
+                    "Cloud infrastructure, observability, and clean functional code so the system stays fast and affordable as you grow.",
                   icon: TrendingUp,
                 },
                 {
