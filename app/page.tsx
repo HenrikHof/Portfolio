@@ -190,8 +190,8 @@ export default function Home() {
     {
       title: "Schedule",
       icon: <Calendar className="h-full w-full text-muted-foreground" />,
-      href: "#connect",
-      onClick: () => setScheduleOpen(true),
+      href: "https://calendly.com/jphenrikhof/30min",
+      onClick: () => window.open("https://calendly.com/jphenrikhof/30min", "_blank", "noopener,noreferrer"),
     },
     {
       title: "Business Card",
@@ -954,7 +954,7 @@ export default function Home() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  { name: "Schedule Call", url: "#connect" },
+                  { name: "Schedule Call", url: "https://calendly.com/jphenrikhof/30min" },
                   { name: "WhatsApp", url: "#", onClick: () => setWhatsappDialogOpen(true) },
                   { name: "LinkedIn", url: "#" },
                   { name: "GitHub", url: "#" },
@@ -1098,24 +1098,37 @@ export default function Home() {
                     </FormItem>
                   )}
                 />
-                <div className="flex flex-col sm:flex-row gap-3 pt-2 w-full">
+                <div className="space-y-3 pt-2">
                   <Button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="flex-1 bg-foreground text-background hover:bg-foreground/90"
-                  >
-                    {isSubmitting ? "Sending..." : submitSuccess ? "Sent!" : "Send Message"}
-                  </Button>
-                  <button
+                    type="button"
                     onClick={() => {
+                      window.open("https://calendly.com/jphenrikhof/30min", "_blank", "noopener,noreferrer")
                       setScheduleOpen(false)
-                      setWhatsappDialogOpen(true)
                     }}
-                    className="flex items-center justify-center gap-2 flex-1 px-5 py-3 border border-border/50 rounded-md hover:border-border hover:bg-muted/30 transition-all duration-200 text-sm font-medium"
+                    className="w-full bg-foreground text-background hover:bg-foreground/90 flex items-center justify-center gap-2"
                   >
-                    <MessageCircle className="h-4 w-4" />
-                    WhatsApp
-                  </button>
+                    <Calendar className="h-4 w-4" />
+                    Schedule on Calendly
+                  </Button>
+                  <div className="flex flex-col sm:flex-row gap-3 w-full">
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="flex-1 bg-foreground text-background hover:bg-foreground/90"
+                    >
+                      {isSubmitting ? "Sending..." : submitSuccess ? "Sent!" : "Send Message"}
+                    </Button>
+                    <button
+                      onClick={() => {
+                        setScheduleOpen(false)
+                        setWhatsappDialogOpen(true)
+                      }}
+                      className="flex items-center justify-center gap-2 flex-1 px-5 py-3 border border-border/50 rounded-md hover:border-border hover:bg-muted/30 transition-all duration-200 text-sm font-medium"
+                    >
+                      <MessageCircle className="h-4 w-4" />
+                      WhatsApp
+                    </button>
+                  </div>
                 </div>
               </form>
             </Form>
