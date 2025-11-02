@@ -190,8 +190,8 @@ export default function Home() {
     {
       title: "Schedule",
       icon: <Calendar className="h-full w-full text-muted-foreground" />,
-      href: "https://calendly.com/jphenrikhof/30min",
-      onClick: () => window.open("https://calendly.com/jphenrikhof/30min", "_blank", "noopener,noreferrer"),
+      href: "https://calendly.com/jphenrikhof/30min?background_color=3f3f3f&text_color=efefef&primary_color=ffffff",
+      onClick: () => window.open("https://calendly.com/jphenrikhof/30min?background_color=3f3f3f&text_color=efefef&primary_color=ffffff", "_blank", "noopener,noreferrer"),
     },
     {
       title: "Business Card",
@@ -954,7 +954,7 @@ export default function Home() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
-                  { name: "Schedule Call", url: "https://calendly.com/jphenrikhof/30min" },
+                  { name: "Schedule Call", url: "https://calendly.com/jphenrikhof/30min?background_color=3f3f3f&text_color=efefef&primary_color=ffffff" },
                   { name: "WhatsApp", url: "#", onClick: () => setWhatsappDialogOpen(true) },
                   { name: "LinkedIn", url: "#" },
                   { name: "GitHub", url: "#" },
@@ -1102,7 +1102,7 @@ export default function Home() {
                   <Button
                     type="button"
                     onClick={() => {
-                      window.open("https://calendly.com/jphenrikhof/30min", "_blank", "noopener,noreferrer")
+                      window.open("https://calendly.com/jphenrikhof/30min?background_color=3f3f3f&text_color=efefef&primary_color=ffffff", "_blank", "noopener,noreferrer")
                       setScheduleOpen(false)
                     }}
                     className="w-full bg-foreground text-background hover:bg-foreground/90 flex items-center justify-center gap-2"

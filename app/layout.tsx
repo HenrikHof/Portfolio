@@ -126,9 +126,9 @@ export default function RootLayout({
               function initCalendlyBadge() {
                 if (typeof window !== 'undefined' && window.Calendly) {
                   window.Calendly.initBadgeWidget({ 
-                    url: 'https://calendly.com/jphenrikhof/30min', 
+                    url: 'https://calendly.com/jphenrikhof/30min?background_color=3f3f3f&text_color=efefef&primary_color=ffffff', 
                     text: 'Schedule time with me', 
-                    color: '#0069ff', 
+                    color: '#2c2c2c', 
                     textColor: '#ffffff', 
                     branding: true 
                   });
